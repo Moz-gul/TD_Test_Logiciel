@@ -23,5 +23,11 @@ class TestExampleFunc(unittest.TestCase):
         self.assertEqual(ex1.n_min_int(list3, 1), [0])
         self.assertEqual(ex1.n_min_int(list4, 3), None)
 
+    def test_is_prime_number(self):
+        self.assertEqual(ex1.is_prime_number(1), False)
+        self.assertEqual(ex1.is_prime_number(2), True)
+        self.assertEqual(ex1.is_prime_number(3), True)
+        self.assertEqual(ex1.is_prime_number(4), False)
+
 if __name__ == "__main__":
     unittest.main()

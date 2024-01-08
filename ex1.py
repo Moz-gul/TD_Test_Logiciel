@@ -44,3 +44,7 @@ def n_min_int(list, n):
     else:
         print("Erreur : n est plus grand que la taille de la liste...")
         return None
+    
+# Implementation 3
+def is_prime_number(number):
+    pass
