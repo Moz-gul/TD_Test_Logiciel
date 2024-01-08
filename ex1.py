@@ -21,3 +21,7 @@ def three_max_int(list):
     else:
         print("Erreur : la liste est trop petite...")
         return None
+
+# Implementation 2
+def n_min_int(list, n):
+    pass
