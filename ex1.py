@@ -24,4 +24,23 @@ def three_max_int(list):
 
 # Implementation 2
 def n_min_int(list, n):
-    pass
+
+    if (n <= len(list)):
+
+        buffer = list
+        n_min = [1000000] * n
+        n_min[0] = list[0]
+        min_index = 0
+
+        for i in range(n):
+            for j in range(1, len(buffer)):
+                if (buffer[j] < n_min[i]):
+                    n_min[i] = buffer[j]
+                    min_index = j
+            buffer[min_index] = 1000000
+            
+        return n_min
+    
+    else:
+        print("Erreur : n est plus grand que la taille de la liste...")
+        return None
