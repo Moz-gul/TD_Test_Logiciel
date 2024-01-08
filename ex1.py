@@ -47,4 +47,17 @@ def n_min_int(list, n):
     
 # Implementation 3
 def is_prime_number(number):
-    pass
+
+    if(number > 1):
+    
+        div = number - 1
+        while (div > 1):
+            if (number % div == 0):
+                return False
+            else:
+                div -= 1
+        
+        return True
+    
+    else:
+        return False
