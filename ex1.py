@@ -61,3 +61,7 @@ def is_prime_number(number):
     
     else:
         return False
+    
+# Implementation 4
+def is_arithmetic(list):
+    pass
