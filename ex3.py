@@ -1,10 +1,11 @@
 import numpy as np
 
-# Calculate the Root-Mean-Square (RMS) value of the array
 
+# Calculate the Mean-Square (MS) value of the array
 def ms(d):
     return sum(np.abs(d)**2)/len(d)
 
+# Calculate the Root-Mean-Square (RMS) value of the array
 def rms(d):
     return np.sqrt(ms(d))
 
