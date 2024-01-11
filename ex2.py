@@ -15,13 +15,13 @@ class Fifo:
 # Implementation 2
 class Lifo:
     def __init__(self):
-        pass
+        self.content = []
 
     def add(self, element):
-        pass
+        self.content.append(element)
 
     def remove(self):
-        pass
+        self.content.pop()
 
     def get(self):
-        pass
+        return self.content
