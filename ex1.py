@@ -71,3 +71,7 @@ def is_arithmetic(list):
             return False
         
     return True
+
+# Implementation 5
+def is_geometric(list):
+    pass

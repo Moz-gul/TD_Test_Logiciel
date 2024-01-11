@@ -37,6 +37,14 @@ class TestExampleFunc(unittest.TestCase):
         self.assertEqual(ex1.is_arithmetic(list2), False)
         self.assertEqual(ex1.is_arithmetic(list3), False)
 
+    def test_is_geometric(self):
+        list1 = [1, 3, 5, 7, 9]     # arithmetic: Un+1 = Un + 2 with U0 = 1
+        list2 = [2, 6, 18, 54]      # geometric: Un+1 = Un x 3 with U0 = 2
+        list3 = [3, 7, 15, 31, 63]  # both: Un+1 = Un x 2 + 1 with U0 = 3
+        self.assertEqual(ex1.is_geometric(list1), False)
+        self.assertEqual(ex1.is_geometric(list2), True)
+        self.assertEqual(ex1.is_geometric(list3), False)
+
 
 if __name__ == "__main__":
     unittest.main()
