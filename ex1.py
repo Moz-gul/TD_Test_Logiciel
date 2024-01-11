@@ -64,4 +64,10 @@ def is_prime_number(number):
     
 # Implementation 4
 def is_arithmetic(list):
-    pass
+    
+    r = list[1] - list[0]
+    for i in range(2, len(list)):
+        if (list[i] - list[i-1] != r):
+            return False
+        
+    return True
