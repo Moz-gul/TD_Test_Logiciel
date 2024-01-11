@@ -1,8 +1,12 @@
 import numpy as np
 
 # Calculate the Root-Mean-Square (RMS) value of the array
+
+def ms(d):
+    return sum(np.abs(d)**2)/len(d)
+
 def rms(d):
-    return np.sqrt(sum(np.abs(d)**2)/len(d))
+    return np.sqrt(ms(d))
 
 # Perform RMS normalization
 def initial_rms_norm(d):
@@ -16,7 +20,7 @@ def new_rms_norm(d):
     # Calculate the RMS normalization factor
     # desired_rms=1.0
     li = []
-    a = np.sqrt( len(d) / sum(np.abs(d)**2))
+    a = np.sqrt( 1/ms(d))
     for d_k in d:
         li.append(d_k * a)
     return li
