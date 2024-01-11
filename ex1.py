@@ -74,4 +74,10 @@ def is_arithmetic(list):
 
 # Implementation 5
 def is_geometric(list):
-    pass
+    
+    q = list[1] / list[0]
+    for i in range(2, len(list)):
+        if (list[i] / list[i-1] != q):
+            return False
+        
+    return True
