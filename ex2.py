@@ -1,13 +1,13 @@
 # Implementation 1
 class Fifo:
     def __init__(self):
-        pass
+        self.content = []
 
     def add(self, element):
-        pass
+        self.content.append(element)
 
     def remove(self):
-        pass
+        self.content.pop(0)
 
     def get(self):
-        pass
+        return self.content
