@@ -15,5 +15,8 @@ def initial_rms_norm(d):
 def new_rms_norm(d):
     # Calculate the RMS normalization factor
     # desired_rms=1.0
+    li = []
     a = np.sqrt( len(d) / sum(np.abs(d)**2))
-    return [ d_k * a for d_k in d]
+    for d_k in d:
+        li.append(d_k * a)
+    return li
