@@ -1,4 +1,4 @@
-#include "graphe.h"
+#include "exo3.2_graphe.h"
 
 // CREATION DE GRAPHE
 t_graphe * creer_graphe(int nb_sommets)
