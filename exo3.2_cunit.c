@@ -57,7 +57,7 @@ void test_ajouter_adjacence(void) {
 
     CU_ASSERT_FALSE(G->matrice[0][1]);
 
-    ajouter_adjacence(G, 0, 1, true);
+    ajouter_adjacence(G, 0, 1);
 
     // Perform assertions to check if the adjacency is added correctly
     for(int l=0 ; l<G->nb_sommets ; l++)

@@ -20,7 +20,7 @@ t_graphe * creer_graphe(int nb_sommets);
 t_graphe * creer_graphe_aleatoirement(void);
 void liberer_graphe(t_graphe * G);
 void afficher_graphe(t_graphe * G);
-void ajouter_adjacence(t_graphe * G, int src, int dest, bool estOriente);
+void ajouter_adjacence(t_graphe * G, int src, int dest);
 void sauver_graphe(t_graphe * G, char * nom_fichier);
 t_graphe * charger_graphe(const char * nom_fichier);
 

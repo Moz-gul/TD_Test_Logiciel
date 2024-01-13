@@ -42,9 +42,6 @@ t_graphe * creer_graphe_aleatoirement(void)
     // Ajout aleatoire d'adjacences
     int nb_adjecences = (rand() % nb_sommets*2) + 5;    // entre 5 et nb_sommets*2 + 5 ajout d'adjacences
     int src, dest;
-    bool estOriente;
-    if(rand() % 2 == 0) estOriente = true;
-    else estOriente = false;
 
     for(int i=0 ; i<nb_adjecences ; i++)
     {
@@ -52,7 +49,7 @@ t_graphe * creer_graphe_aleatoirement(void)
             src = rand() % nb_sommets;
             dest = rand() % nb_sommets;
         } while(src == dest);
-        ajouter_adjacence(G, src, dest, estOriente);
+        ajouter_adjacence(G, src, dest);
     }
 
     return G;
@@ -70,15 +67,13 @@ void liberer_graphe(t_graphe * G)
 
 
 // AJOUTER UNE ADJACENCE
-void ajouter_adjacence(t_graphe * G, int src, int dest, bool estOriente)
+// On suppose que tous les graphes sont orientés
+void ajouter_adjacence(t_graphe * G, int src, int dest)
 {
     if((src < G->nb_sommets) && (dest < G->nb_sommets))
     {
         if(src != dest)
-        {
             G->matrice[src][dest] = 1;
-            if(estOriente == false) G->matrice[dest][src] = 1;
-        }
         else printf("Echec de l'ajout d'une adjacence : les sommets choisis ne doivent pas etre les memes\n");
     }
     else printf("Echec de l'ajout d'une adjacence : au moins un sommet n'existe pas\n");
