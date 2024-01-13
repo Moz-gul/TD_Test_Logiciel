@@ -128,17 +128,6 @@ t_graphe * parcours_profondeur(t_graphe * G, int v)
         if(estMarque[i] == false) DFS(G, i, pere, estMarque);
     }
 
-    // Affichage du tableau pere[]
-    printf("\nTableau pere[] :\n\n%*s :",10,"sommets");
-    for(int i=0 ; i<G->nb_sommets ; i++) printf("%*d",3,i);
-    printf("\n%*s :",10,"peres");
-    for(int i=0 ; i<G->nb_sommets ; i++)
-    {
-        if(pere[i] != 1000) printf("%*d",3,pere[i]);
-        else printf("   ");
-    }
-    printf("\n\n");
-
     // Creation de l'arborescence
     t_graphe * A = creer_graphe(G->nb_sommets);
     for(int i=0 ; i<G->nb_sommets ; i++)
@@ -165,30 +154,6 @@ void DFS(t_graphe * G, int v, int * pere, bool * estMarque)
             }
         }
     }
-}
-
-
-// SAUVEGARDER UN GRAPHE DANS UN FICHIER
-void sauver_graphe(t_graphe * G, char * nom_fichier)
-{
-    FILE * fichier = fopen(nom_fichier, "w");
-    if(fichier == NULL)
-    {
-        printf("Erreur d'ouverture de fichier\n");
-        exit(EXIT_FAILURE);
-    }
-
-    fprintf(fichier, "%d\n", G->nb_sommets);
-    for(int l=0 ; l<G->nb_sommets ; l++)
-    {
-        for(int c=0 ; c<G->nb_sommets ; c++)
-        {
-            fprintf(fichier, " %d ", G->matrice[l][c]);
-        }
-        fprintf(fichier, "\n");
-    }
-
-    fclose(fichier);
 }
 
 
