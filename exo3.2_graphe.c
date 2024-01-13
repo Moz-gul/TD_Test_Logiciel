@@ -98,13 +98,11 @@ t_graphe * parcours_profondeur(t_graphe * G, int v)
         estMarque[i] = false;
     }
 
-    // Exploration du graphe
-    DFS(G, v, pere, estMarque);
-
     // Verification que tous les sommets aient ete explores
     for(int i=0 ; i<G->nb_sommets ; i++)
         // Si un sommet n'est pas marque, lancement d'un parcours a partir de ce dernier
-        if(estMarque[i] == false) DFS(G, i, pere, estMarque);
+        if(!estMarque[i]) 
+            DFS(G, i, pere, estMarque);
 
     // Creation de l'arborescence
     t_graphe * A = creer_graphe(G->nb_sommets);
@@ -121,9 +119,9 @@ void DFS(t_graphe * G, int v, int * pere, bool * estMarque)
     estMarque[v] = true;
     for(int c=0 ; c<G->nb_sommets ; c++)
     {
-        if(G->matrice[v][c] == 1)
+        if(G->matrice[v][c])
         {
-            if(estMarque[c] == false)
+            if(!estMarque[c])
             {
                 pere[c] = v;
                 DFS(G, c, pere, estMarque);
