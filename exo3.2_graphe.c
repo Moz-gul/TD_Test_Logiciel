@@ -5,33 +5,28 @@ t_graphe * creer_graphe(int nb_sommets)
 {
     // Allocation dynamique du graphe et de sa matrice d'adjacences
     t_graphe * G = (t_graphe*) malloc(sizeof(t_graphe));
-    if(G == NULL)
+    if(G != NULL)
     {
-        printf("Echec de la creation de graphe\n");
-        exit(EXIT_FAILURE);
-    }
-    G->matrice = (int**) malloc(nb_sommets*sizeof(int*));
-    if(G->matrice == NULL)
-    {
-        printf("Echec de la creation de graphe\n");
-        exit(EXIT_FAILURE);
-    }
-    for(int i=0 ; i<nb_sommets ; i++)
-    {
-        G->matrice[i] = (int*) malloc(nb_sommets*sizeof(int));
-        if(G->matrice[i] == NULL)
+        G->matrice = (int**) malloc(nb_sommets*sizeof(int*));
+        if(G->matrice != NULL)
         {
-            printf("Echec de la creation de graphe\n");
-            exit(EXIT_FAILURE);
+            for(int i=0 ; i<nb_sommets ; i++)
+                G->matrice[i] = (int*) malloc(nb_sommets*sizeof(int));
+
+            // Initialisation du graphe et de sa matrice, "l" designant la ligne et "c" la colonne
+            G->nb_sommets = nb_sommets;
+            for(int l=0 ; l<nb_sommets ; l++)
+                for(int c=0 ; c<nb_sommets ; c++) 
+                    G->matrice[l][c] = 0;
+
+            return G;
         }
+    
     }
 
-    // Initialisation du graphe et de sa matrice, "l" designant la ligne et "c" la colonne
-    G->nb_sommets = nb_sommets;
-    for(int l=0 ; l<nb_sommets ; l++)
-        for(int c=0 ; c<nb_sommets ; c++) G->matrice[l][c] = 0;
-
-    return G;
+    printf("Echec de la creation de graphe\n");
+    exit(EXIT_FAILURE);
+    
 }
 
 
@@ -67,26 +62,10 @@ t_graphe * creer_graphe_aleatoirement(void)
 // LIBERATION DE GRAPHE
 void liberer_graphe(t_graphe * G)
 {
-    for(int l=0 ; l<G->nb_sommets ; l++) free(G->matrice[l]);
+    for(int l=0 ; l<G->nb_sommets ; l++)
+        free(G->matrice[l]);
     free(G->matrice);
     free(G);
-}
-
-
-// AFFICHAGE DE LA MATRICE DU GRAPHE
-void afficher_graphe(t_graphe * G)
-{
-    printf("\nAffichage du graphe :\n\n%*s  ",3,"V");
-    for(int c=0 ; c<G->nb_sommets ; c++) printf("%*d",3,c);
-    printf("\n\n");
-
-    for(int l=0 ; l<G->nb_sommets ; l++)
-    {
-        printf("%*d  ",3,l);
-        for(int c=0 ; c<G->nb_sommets ; c++) printf("%*d",3,G->matrice[l][c]);
-        printf("\n");
-    }
-    printf("\n");
 }
 
 
@@ -123,17 +102,13 @@ t_graphe * parcours_profondeur(t_graphe * G, int v)
 
     // Verification que tous les sommets aient ete explores
     for(int i=0 ; i<G->nb_sommets ; i++)
-    {
         // Si un sommet n'est pas marque, lancement d'un parcours a partir de ce dernier
         if(estMarque[i] == false) DFS(G, i, pere, estMarque);
-    }
 
     // Creation de l'arborescence
     t_graphe * A = creer_graphe(G->nb_sommets);
     for(int i=0 ; i<G->nb_sommets ; i++)
-    {
         if(pere[i] < 1000) A->matrice[pere[i]][i] = 1;
-    }
 
     return A;
 }
