@@ -21,12 +21,9 @@ t_graphe * creer_graphe(int nb_sommets)
 
             return G;
         }
-    
     }
-
     printf("Echec de la creation de graphe\n");
-    exit(EXIT_FAILURE);
-    
+    exit(EXIT_FAILURE);   
 }
 
 
@@ -38,20 +35,25 @@ t_graphe * creer_graphe_aleatoirement(void)
     // Dimensionnement aleatoire du graphe
     int nb_sommets = (rand() % (NB_SOMMETS_MAX-1)) + 2;  // entre 2 et NB_SOMMETS_MAX sommets
     t_graphe * G = creer_graphe(nb_sommets);
+    G = ajout_aleatoire_adj(G);
+    return G;
+}
 
-    // Ajout aleatoire d'adjacences
-    int nb_adjecences = (rand() % nb_sommets*2) + 5;    // entre 5 et nb_sommets*2 + 5 ajout d'adjacences
+
+// AJOUT ALÉATOIRE D'ADJACENCES
+t_graphe * ajout_aleatoire_adj(t_graphe * G)
+{
+    int nb_adjecences = (rand() % G->nb_sommets*2) + 5;    // entre 5 et nb_sommets*2 + 5 ajout d'adjacences
     int src, dest;
 
     for(int i=0 ; i<nb_adjecences ; i++)
     {
         do{
-            src = rand() % nb_sommets;
-            dest = rand() % nb_sommets;
+            src = rand() % G->nb_sommets;
+            dest = rand() % G->nb_sommets;
         } while(src == dest);
         ajouter_adjacence(G, src, dest);
     }
-
     return G;
 }
 
