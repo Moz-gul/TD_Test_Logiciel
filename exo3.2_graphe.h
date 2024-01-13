@@ -17,6 +17,7 @@ typedef struct
 
 // Fonctions de base
 t_graphe * creer_graphe(int nb_sommets);
+t_graphe * reset_graphe(t_graphe * G);
 t_graphe * creer_graphe_aleatoirement(void);
 t_graphe * ajout_aleatoire_adj(t_graphe * G);
 void liberer_graphe(t_graphe * G);

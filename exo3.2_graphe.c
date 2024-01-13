@@ -12,19 +12,24 @@ t_graphe * creer_graphe(int nb_sommets)
         {
             for(int i=0 ; i<nb_sommets ; i++)
                 G->matrice[i] = (int*) malloc(nb_sommets*sizeof(int));
-
-            // Initialisation du graphe et de sa matrice, "l" designant la ligne et "c" la colonne
             G->nb_sommets = nb_sommets;
-            for(int l=0 ; l<nb_sommets ; l++)
-                for(int c=0 ; c<nb_sommets ; c++) 
-                    G->matrice[l][c] = 0;
-
-            return G;
+            return reset_graphe(G);
         }
     }
     printf("Echec de la creation de graphe\n");
     exit(EXIT_FAILURE);   
 }
+
+
+//Réinitalise le graphe
+t_graphe * reset_graphe(t_graphe * G)
+{
+    for(int l=0 ; l<G->nb_sommets ; l++)
+        for(int c=0 ; c<G->nb_sommets ; c++) 
+            G->matrice[l][c] = 0;
+    return G;
+}
+
 
 
 // CREATION ALEATOIRE DE GRAPHE
@@ -35,8 +40,7 @@ t_graphe * creer_graphe_aleatoirement(void)
     // Dimensionnement aleatoire du graphe
     int nb_sommets = (rand() % (NB_SOMMETS_MAX-1)) + 2;  // entre 2 et NB_SOMMETS_MAX sommets
     t_graphe * G = creer_graphe(nb_sommets);
-    G = ajout_aleatoire_adj(G);
-    return G;
+    return ajout_aleatoire_adj(G);
 }
 
 
